@@ -6,9 +6,10 @@
     "arrowFunctions": true,
     "jsx": true,
     "classes": true,
-    "templateStrings": true,
   },
   "rules": {
-    "semi": [2, "always"]
-  }
+    "semi": [2, "always"],
+    "eol-last": true,
+  },
+  "parser":"babel-eslint"
 }
