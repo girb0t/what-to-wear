@@ -7,7 +7,7 @@ const router = require('./router');
 
 // App Setup
 app.use(morgan('combined')); //for logging incoming requests
-router(app);
+router(app, express);
 
 // Server Setup
 const port = process.env.PORT || 3000;
