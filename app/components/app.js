@@ -5,7 +5,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        What To Wear
+        <h1>What To Wear</h1>
         {this.props.children}
       </div>
     );
