@@ -1,5 +1,9 @@
 # what-to-wear
 
+##TODO
+- install and use postcss-loader
+- finish app
+
 ##About
 Weather forecast app built using React, Redux, ES6, NodeJS, and Express.
 
