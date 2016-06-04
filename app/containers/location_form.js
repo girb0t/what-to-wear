@@ -26,6 +26,7 @@ class LocationForm extends Component {
       <div>
         <h2>Location Form</h2>
         <Autosuggest suggestions={suggestions}
+                     onSuggestionSelected={this.onSuggestionSelected}
                      onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
                      getSuggestionValue={this.getSuggestionValue}
                      renderSuggestion={this.renderSuggestion}
@@ -78,6 +79,10 @@ class LocationForm extends Component {
     return (
       <span>{suggestion.description}</span>
     );
+  }
+
+  onSuggestionSelected(event, { suggestion, suggestionValue, sectionIndex, method }) {
+    console.log(`Selected: ${suggestionValue}`)
   }
 }
 
