@@ -20,5 +20,10 @@ Visit `http://localhost:3000`
 
 To run tests:
 ```
-  >npm run test:watch
+  > npm run test:watch
+```
+
+To run node-inspector for debugging:
+```
+  > node-inspector
 ```
