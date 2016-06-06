@@ -26,7 +26,6 @@ class LocationSearchBar extends Component {
 
     return (
       <div>
-        <h2>Location Form</h2>
         <Autosuggest suggestions={suggestions}
                      onSuggestionSelected={this.onSuggestionSelected}
                      onSuggestionsUpdateRequested={this.onSuggestionsUpdateRequested}
