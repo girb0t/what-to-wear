@@ -1,8 +1,6 @@
 # what-to-wear
 
-##TODO
-- install and use postcss-loader
-- finish app
+Work In Progress!
 
 ##About
 Weather forecast app built using React, Redux, ES6, NodeJS, and Express.
@@ -12,22 +10,34 @@ Weather forecast app built using React, Redux, ES6, NodeJS, and Express.
 - [Open Weather Map](http://openweathermap.org/)
 
 ##Setup
-```
-  > git clonehttps://github.com/girb0t/what-to-wear.git
+1. clone repo and install dependencies:
+
+  ```javascript
+  > git clone https://github.com/girb0t/what-to-wear.git
   > cd what-to-wear
   > npm install
-  > npm start
-```
+  ```
+
+2. create config.js in the root directory modeled after config_example.js
+
+3. Snag API keys for Google Place Autocomplete and Open Weather Map and put them in config.js
+
+4. Start server
+
+  ```javascript
+  > npm run start
+  ```
+
 Visit `http://localhost:3000`
 
 ##Dev Notes
 
 To run tests:
 ```
-  > npm run test:watch
+> npm run test:watch
 ```
 
 To run node-inspector for debugging:
 ```
-  > node-inspector
+> node-inspector
 ```
