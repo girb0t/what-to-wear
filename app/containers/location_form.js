@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import LocationSearchBar from '../components/location_search_bar';
+import axios from 'axios';
 
 class LocationForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
   }
 
   render() {

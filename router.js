@@ -6,4 +6,25 @@ module.exports = function(app, express) {
     // res.send({ hello: 'world' });
     res.sendFile(__dirname + "/app/index.html");
   });
+
+  app.get('/location-suggestions', function(req, res) {
+    const locations = [
+      {
+        description: 'New York, NY, USA'
+      },
+      {
+        description: 'Boston, MA, USA'
+      },
+      {
+        description: 'Oakland, CA, USA'
+      },
+      {
+        description: 'Kiev, Ukraine'
+      }
+    ];
+
+    res.json({
+      locations
+    })
+  });
 };

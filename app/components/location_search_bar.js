@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import Autosuggest from 'react-autosuggest';
 
 class LocationSearchBar extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       value: '',
-      suggestions: this.getSuggestions('')
+      suggestions: []
     };
 
     this.onChange = this.onChange.bind(this);
@@ -43,33 +44,26 @@ class LocationSearchBar extends Component {
   }
 
   onSuggestionsUpdateRequested({ value }) {
-    this.setState({
-      suggestions: this.getSuggestions(value)
-    });
+    this.loadSuggestions(value);
   }
 
-  getLocations(term) {
-    return [
-      {
-        description: 'New York, NY, USA'
-      },
-      {
-        description: 'Boston, MA, USA'
-      },
-      {
-        description: 'Oakland, CA, USA'
-      },
-      {
-        description: 'Kiev, Ukraine'
-      }
-    ]
-  }
-
-  getSuggestions(value) {
-    const inputValue = value.trim().toLowerCase();
-    const inputLength = inputValue.length;
-
-    return inputLength === 0 ? [] : this.getLocations(inputValue);
+  loadSuggestions(value) {
+    value = value.trim().toLowerCase();
+    const request = axios.get('/location-suggestions', {
+                        params: {
+                          searchTerm: value
+                        }
+                      })
+                      .then(response => {
+                        if (value === this.state.value) { // Ignore suggestions if input value changed
+                          this.setState({
+                            suggestions: response.data.locations
+                          })
+                        }
+                      })
+                      .catch(response => {
+                        // TODO handle error
+                      })
   }
 
   getSuggestionValue(suggestion) { // when suggestion selected, this function tells what should be the value of the input
