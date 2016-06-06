@@ -18,7 +18,7 @@ module.exports = function(app, express) {
     request({
       method: 'GET',
       url: 'https://maps.googleapis.com/maps/api/place/autocomplete/json',
-      qs: { key: apiToken, input: req.query.searchTerm }
+      qs: { key: apiToken, input: req.query.searchTerm, types: 'geocode' }
     }, function(error, response, body) {
       if(error) {
         console.log(error);
