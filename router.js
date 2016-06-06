@@ -6,14 +6,12 @@ module.exports = function(app, express) {
   app.use(express.static('app'));
 
   app.get('/:var(location|one-day-forecast)?', function(req, res) {
-    // res.send({ hello: 'world' });
     res.sendFile(__dirname + "/app/index.html");
   });
 
   app.get('/location-suggestions', function(req, res) {
     // TODO: move to controller
     const apiToken = config.tokens.googlePlaceAutocomplete;
-    //https://maps.googleapis.com/maps/api/place/autocomplete/json?input=newyork&key=AIzaSyD7CxdNhYUYPjbFMM6a62yQ13QdbyQXc24
 
     request({
       method: 'GET',

@@ -78,7 +78,6 @@ class LocationSearchBar extends Component {
   }
 
   onSuggestionSelected(event, { suggestion, suggestionValue, sectionIndex, method }) {
-    debugger
     this.props.onLocationSelected(suggestion);
   }
 }
