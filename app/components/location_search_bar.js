@@ -57,7 +57,7 @@ class LocationSearchBar extends Component {
                       .then(response => {
                         if (value === this.state.value) { // Ignore suggestions if input value changed
                           this.setState({
-                            suggestions: response.data.locations
+                            suggestions: response.data.suggestions
                           })
                         }
                       })
