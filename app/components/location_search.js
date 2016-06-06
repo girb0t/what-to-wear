@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Autosuggest from 'react-autosuggest';
 
+require('../stylesheets/modules/location_search.scss');
+
 class LocationSearchBar extends Component {
   constructor(props) {
     super(props);
@@ -76,6 +78,7 @@ class LocationSearchBar extends Component {
   }
 
   onSuggestionSelected(event, { suggestion, suggestionValue, sectionIndex, method }) {
+    debugger
     this.props.onLocationSelected(suggestion);
   }
 }

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import LocationSearchBar from '../components/location_search_bar';
+import LocationSearchBar from '../components/location_search';
 import axios from 'axios';
 
-require("../stylesheets/modules/location-form.scss");
+require('../stylesheets/modules/location_form.scss');
 
 class LocationForm extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class LocationForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className='page-container'>
         <LocationSearchBar onLocationSelected={this.onLocationSelected} />
       </div>
     );
