@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon --debug server.js",
     "watch": "webpack --progress --colors --watch --display-error-details",
-    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive 'test'",
+    "test": "mocha --compilers js:babel-core/register --require ignore-styles ./test/test_helper.js --recursive 'test'",
     "test:watch": "npm run test -- --watch"
   },
   "repository": {
@@ -26,6 +26,7 @@
     "babel-preset-react": "^6.5.0",
     "chai": "^3.5.0",
     "chai-jquery": "^2.0.0",
+    "ignore-styles": "^2.0.0",
     "jquery": "^2.2.4",
     "jsdom": "^9.2.1",
     "mocha": "^2.5.3",
