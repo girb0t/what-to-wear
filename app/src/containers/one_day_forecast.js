@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { fetchDeviceLocation } from '../actions/index';
-import { Link } from 'react-router';
+import _ from 'lodash';
 
 class OneDayForecast extends Component {
   static contextTypes = {
@@ -10,25 +9,27 @@ class OneDayForecast extends Component {
 
   componentWillMount() {
     const locationInCookie = false; //STUB
-    if (!locationInCookie) {
-      // redirect to location form
+    if (!locationInCookie && _.isEmpty(this.props.location)) {
       this.context.router.push('/location');
+    } else if (locationInCookie) {
     }
-    // this.props.fetchDeviceLocation();
   }
 
   render() {
     return (
       <div>
         <h2>One Day Forecast</h2>
-        <p>{this.props.location.zipCode}</p>
+        <p>{this.props.location.description}</p>
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  return { location: state.location };
+  return {
+    location: state.forecastState.location,
+    oneDayForecast: state.forecastState.oneDayForecast
+  };
 }
 
-export default connect(mapStateToProps, { fetchDeviceLocation })(OneDayForecast)
+export default connect(mapStateToProps, null)(OneDayForecast)

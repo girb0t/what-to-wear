@@ -1,8 +1,13 @@
-export const FETCH_DEVICE_LOCATION = 'FETCH_DEVICE_LOCATION';
+export const UPDATE_ONE_DAY_FORECAST = 'UPDATE_ONE_DAY_FORECAST';
 
-export function fetchDeviceLocation() {
+export function updateLocationAndOneDayForecast(location) {
+  const oneDayForecast = { temperature: 51 } //STUB
+
   return {
-    type: FETCH_DEVICE_LOCATION,
-    payload: { zipCode: '02144' }
-  };
+    type: UPDATE_ONE_DAY_FORECAST,
+    payload: {
+      location,
+      oneDayForecast
+    }
+  }
 }
