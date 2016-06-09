@@ -8,9 +8,11 @@ export default function(state = INITIAL_STATE, action) {
   const payload = action.payload;
   switch(action.type) {
   case UPDATE_ONE_DAY_FORECAST:
+    const { location, oneDayForecast } = payload;
     return { ...state,
-             location: payload.location,
-             oneDayForecast: payload.oneDayForecast };
+             location,
+             oneDayForecast
+           };
   default:
     return state;
   }
