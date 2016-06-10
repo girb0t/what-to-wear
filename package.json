@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --debug server.js",
+    "start": "nodemon --harmony --debug server.js",
     "watch": "webpack --progress --colors --watch --display-error-details",
     "test": "mocha --compilers js:babel-core/register --require ignore-styles ./test/test_helper.js --recursive 'test'",
     "test:watch": "npm run test -- --watch"
