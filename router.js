@@ -10,7 +10,7 @@ module.exports = function(app, express) {
   });
 
   app.get('/location-suggestions', function(req, res) {
-    // TODO: move to controller
+    // TODO: move to controller and create Google API client
     const apiToken = config.tokens.googlePlaceAutocomplete;
 
     request({
@@ -27,6 +27,26 @@ module.exports = function(app, express) {
         });
       }
     });
+  });
+
+  app.get('/one-day-forecast-data', function(req, res) {
+    const apiToken = config.tokens.googlePlaceAutocomplete;
+
+    var myRequest = request({
+      method: 'GET',
+      url: 'https://maps.googleapis.com/maps/api/place/details/json',
+      qs: { key: apiToken, placeid: req.query.placeId }
+    }, function(error, response, body) {
+      if (error) {
+        console.log(error);
+      } else {
+        const longitude = JSON.parse(body).result.geometry.location.lng;
+        const latitude= JSON.parse(body).result.geometry.location.lat;
+
+
+      }
+    })
+
 
   });
 };
