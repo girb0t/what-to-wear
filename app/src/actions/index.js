@@ -12,6 +12,7 @@ export function updateLocationAndOneDayForecast(location) {
   }
 }
 
+// rename to 'current weather' everywhere
 function getOneDayForecast(location) {
   const placeId = location.place_id;
   const request = axios.get('/one-day-forecast-data', {
@@ -21,6 +22,7 @@ function getOneDayForecast(location) {
   })
   .then(response => {
     debugger
+    const currentWeather = response.data.oneDayForecast
   })
   .catch(response => {
     // TODO handle error
