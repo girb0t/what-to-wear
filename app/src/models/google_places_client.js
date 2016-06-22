@@ -18,5 +18,19 @@ module.exports = {
         onSuccess(suggestions);
       }
     });
+  },
+
+  details: function(placeId, onError, onSuccess) {
+    request({
+      method: 'GET',
+      url: host + '/details/json',
+      qs: { key: apiToken, placeid: placeId }
+    }, function(error, response, body) {
+      if (error) {
+        onError(error);
+      } else {
+        onSuccess(JSON.parse(body).result.geometry.location);
+      }
+    })
   }
 }

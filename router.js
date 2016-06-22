@@ -25,23 +25,15 @@ module.exports = function(app, express) {
   });
 
   app.get('/one-day-forecast-data', function(req, res) {
-    const apiToken = config.tokens.googlePlaceAutocomplete;
+    const onSuccess = function(location) {
+      const longitude = location.lng;
+      const latitude = location.lat;
+    };
 
-    var myRequest = request({
-      method: 'GET',
-      url: 'https://maps.googleapis.com/maps/api/place/details/json',
-      qs: { key: apiToken, placeid: req.query.placeId }
-    }, function(error, response, body) {
-      if (error) {
-        console.log(error);
-      } else {
-        const longitude = JSON.parse(body).result.geometry.location.lng;
-        const latitude= JSON.parse(body).result.geometry.location.lat;
+    const onError = function(error) {
+      console.log(error);
+    };
 
-
-      }
-    })
-
-
+    GooglePlacesClient.details(req.query.placeId, onError, onSuccess);
   });
 };
