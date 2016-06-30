@@ -7,7 +7,8 @@ module.exports = function(app, express) {
   //allow static files (CSS/JS files) to be served
   app.use(express.static('app'));
 
-  app.get('/:var(location|current-weather)?', function(req, res) {
+  // route format: '/:var(route1|route2)?'
+  app.get('/:var(current-weather)?', function(req, res) {
     res.sendFile(__dirname + "/app/index.html");
   });
 
