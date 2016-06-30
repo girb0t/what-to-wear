@@ -5,10 +5,7 @@ export const UPDATE_ONE_DAY_FORECAST = 'UPDATE_ONE_DAY_FORECAST';
 export function updateLocationAndOneDayForecast(location) {
   return {
     type: UPDATE_ONE_DAY_FORECAST,
-    payload: {
-      location,
-      oneDayForecast: getOneDayForecast(location)
-    }
+    payload: getOneDayForecast(location),
   }
 }
 
@@ -20,14 +17,6 @@ function getOneDayForecast(location) {
       placeId
     }
   })
-  .then(response => {
-    debugger
-    const currentWeather = response.data.oneDayForecast
-  })
-  .catch(response => {
-    // TODO handle error
-    debugger
-  })
 
-  // return { temperature: 51 }; //STUB
+  return request;
 }
