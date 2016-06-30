@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-class OneDayForecast extends Component {
+class CurrentWeather extends Component {
   static contextTypes = {
     router: PropTypes.object
   }
@@ -26,4 +26,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, null)(OneDayForecast)
+export default connect(mapStateToProps, null)(CurrentWeather)

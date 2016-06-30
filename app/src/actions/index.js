@@ -1,22 +1,17 @@
 import axios from 'axios';
 
-export const UPDATE_ONE_DAY_FORECAST = 'UPDATE_ONE_DAY_FORECAST';
+export const GET_CURRENT_WEATHER = 'GET_CURRENT_WEATHER';
 
-export function updateLocationAndOneDayForecast(location) {
-  return {
-    type: UPDATE_ONE_DAY_FORECAST,
-    payload: getOneDayForecast(location),
-  }
-}
-
-// rename to 'current weather' everywhere
-function getOneDayForecast(location) {
+export function getCurrentWeather(location) {
   const placeId = location.place_id;
-  const request = axios.get('/one-day-forecast-data', {
+  const request = axios.get('/current-weather-data', {
     params: {
       placeId
     }
-  })
+  });
 
-  return request;
+  return {
+    type: GET_CURRENT_WEATHER,
+    payload: request,
+  }
 }

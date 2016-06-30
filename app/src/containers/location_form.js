@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
-import { updateLocationAndOneDayForecast } from '../actions/index';
+import { getCurrentWeather } from '../actions/index';
 import LocationSearchBar from '../components/location_search';
 
 require('../stylesheets/modules/location_form.scss');
@@ -28,10 +28,10 @@ class LocationForm extends Component {
   onLocationSelected(location) {
     // update app state with new location
     // make server call for weather information and update state with weather information
-    // redirect to one-day-forecast page
-    this.props.updateLocationAndOneDayForecast(location);
-    this.context.router.push('/one-day-forecast');
+    // redirect to current-weather page
+    this.props.getCurrentWeather(location);
+    this.context.router.push('/current-weather');
   }
 }
 
-export default connect(null, { updateLocationAndOneDayForecast })(LocationForm)
+export default connect(null, { getCurrentWeather })(LocationForm)

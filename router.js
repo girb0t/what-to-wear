@@ -7,7 +7,7 @@ module.exports = function(app, express) {
   //allow static files (CSS/JS files) to be served
   app.use(express.static('app'));
 
-  app.get('/:var(location|one-day-forecast)?', function(req, res) {
+  app.get('/:var(location|current-weather)?', function(req, res) {
     res.sendFile(__dirname + "/app/index.html");
   });
 
@@ -25,7 +25,7 @@ module.exports = function(app, express) {
     GooglePlacesClient.autocomplete(req.query.searchTerm, onError, onSuccess);
   });
 
-  app.get('/one-day-forecast-data', function(req, res) {
+  app.get('/current-weather-data', function(req, res) {
     // TODO: figure out how to make both API calls without nesting
 
     const onLocationSuccess = function(location) {
