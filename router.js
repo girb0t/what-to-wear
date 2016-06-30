@@ -29,8 +29,8 @@ module.exports = function(app, express) {
     // TODO: figure out how to make both API calls without nesting
 
     const onLocationSuccess = function(location) {
-      const onWeatherSuccess = function(oneDayForecast) {
-        res.json({ oneDayForecast })
+      const onWeatherSuccess = function(currentWeather) {
+        res.json({ currentWeather })
       }
 
       const onWeatherError = function(error) {
