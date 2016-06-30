@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
-import { getCurrentWeather } from '../actions/index';
+import { getCurrentWeather, setLocation } from '../actions/index';
 import LocationSearchBar from '../components/location_search';
 
 require('../stylesheets/modules/current_weather.scss');
@@ -54,6 +54,7 @@ class CurrentWeather extends Component {
     // update app state with new location
     // make server call for weather information and update state with weather information
     // redirect to current-weather page
+    this.props.setLocation(location);
     this.props.getCurrentWeather(location);
   }
 }
@@ -65,4 +66,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { getCurrentWeather })(CurrentWeather)
+export default connect(mapStateToProps, { getCurrentWeather, setLocation })(CurrentWeather)
