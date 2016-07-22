@@ -12,22 +12,19 @@ module.exports = {
       url: host + '/autocomplete/json',
       qs: { key: apiToken, input: searchTerm, types: 'geocode' },
       json: true
-    }
+    };
 
     return rp(options);
   },
 
-  details: function(placeId, onError, onSuccess) {
-    request({
+  detailsPromise: function(placeId, onError, onSuccess) {
+    const options = {
       method: 'GET',
       url: host + '/details/json',
-      qs: { key: apiToken, placeid: placeId }
-    }, function(error, response, body) {
-      if (error) {
-        onError(error);
-      } else {
-        onSuccess(JSON.parse(body).result.geometry.location);
-      }
-    })
+      qs: { key: apiToken, placeid: placeId },
+      json: true
+    };
+
+    return rp(options);
   }
 }
