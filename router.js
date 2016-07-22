@@ -27,22 +27,16 @@ module.exports = function(app, express) {
   app.get('/current-weather-data', function(req, res) {
     // TODO: figure out how to make both API calls without nesting
 
-    const onLocationSuccess = function(location) {
-      const onWeatherSuccess = function(currentWeather) {
-        res.json({ currentWeather })
-      }
-
-      const onWeatherError = function(error) {
-        console.log(error);
-      }
-
-      OpenWeatherMapClient.current(location.lng, location.lat, onWeatherError, onWeatherSuccess);
-    };
-
-    const onLocationError = function(error) {
-      console.log(error);
-    };
-
-    GooglePlacesClient.details(req.query.placeId, onLocationError, onLocationSuccess);
+    GooglePlacesClient.detailsPromise(req.query.placeId)
+      .then(function(details) {
+        const location = details.result.geometry.location;
+        return OpenWeatherMapClient.currentWeatherPromise(location.lng, location.lat);
+      })
+      .then(function(currentWeather) {
+        res.json({ currentWeather });
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
   });
 };
