@@ -28,7 +28,13 @@ Weather forecast app built using React, Redux, ES6, NodeJS, and Express.
   > npm run start
   ```
 
-Visit `http://localhost:3000`
+5. In separate terminal window:
+
+  ```javascript
+  > npm run watch
+  ```
+
+6. Visit `http://localhost:3000`
 
 ##Dev Notes
 
