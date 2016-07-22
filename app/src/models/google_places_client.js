@@ -1,23 +1,20 @@
 const request = require('request');
+const rp = require('request-promise');
 const config = require('../../../config');
 
 const apiToken = config.tokens.googlePlaceAutocomplete;
 const host = 'https://maps.googleapis.com/maps/api/place';
 
 module.exports = {
-  autocomplete: function(searchTerm, onError, onSuccess) {
-    request({
+  autocompletePromise: function(searchTerm) {
+    const options = {
       method: 'GET',
       url: host + '/autocomplete/json',
-      qs: { key: apiToken, input: searchTerm, types: 'geocode' }
-    }, function(error, response, body) {
-      if(error) {
-        onError(error)
-      } else {
-        const suggestions = JSON.parse(body).predictions;
-        onSuccess(suggestions);
-      }
-    });
+      qs: { key: apiToken, input: searchTerm, types: 'geocode' },
+      json: true
+    }
+
+    return rp(options);
   },
 
   details: function(placeId, onError, onSuccess) {

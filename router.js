@@ -14,16 +14,14 @@ module.exports = function(app, express) {
 
   app.get('/location-suggestions', function(req, res) {
     // TODO: move to controller
+    GooglePlacesClient.autocompletePromise(req.query.searchTerm)
+    .then(function(response) {
+      res.json({ suggestions: response.predictions });
+    })
+    .catch(function(err) {
+      console.log(err);
+    });
 
-    const onSuccess = function(suggestions) {
-      res.json({ suggestions });
-    };
-
-    const onError = function(error) {
-      console.log(error);
-    };
-
-    GooglePlacesClient.autocomplete(req.query.searchTerm, onError, onSuccess);
   });
 
   app.get('/current-weather-data', function(req, res) {
